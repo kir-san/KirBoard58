@@ -82,11 +82,11 @@
 
         additional {
             bindings = <
-&none   &none  &none  &none           &none           &none                     &kp KP_LEFT_PARENTHESIS  &kp KP_RIGHT_PARENTHESIS  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp KP_MINUS  &none
-&trans  &none  &none  &none           &none           &none                     &none                    &kp N7                    &kp N8         &kp N9           &kp KP_PLUS   &none
-&trans  &none  &none  &none           &none           &none                     &none                    &kp N4                    &kp N5         &kp N6           &kp KP_PLUS   &none
-&trans  &none  &none  &kp LANGUAGE_1  &kp LANGUAGE_2  &none   &none     &none   &none                    &kp N1                    &kp N2         &kp N3           &kp KP_EQUAL  &trans
-                      &trans          &none           &trans  &trans    &trans  &kp KP_N0                &kp KP_DOT                &kp KP_COMMA
+&none   &none  &none  &none                 &none                 &none                     &kp KP_LEFT_PARENTHESIS  &kp KP_RIGHT_PARENTHESIS  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp KP_MINUS  &none
+&trans  &none  &none  &none                 &none                 &none                     &none                    &kp N7                    &kp N8         &kp N9           &kp KP_PLUS   &none
+&trans  &none  &none  &none                 &none                 &none                     &none                    &kp N4                    &kp N5         &kp N6           &kp KP_PLUS   &none
+&trans  &none  &none  &kp LA(LS(NUMBER_1))  &kp LA(LS(NUMBER_2))  &none   &none     &none   &none                    &kp N1                    &kp N2         &kp N3           &kp KP_EQUAL  &trans
+                      &trans                &none                 &trans  &trans    &trans  &kp KP_N0                &kp KP_DOT                &kp KP_COMMA
             >;
         };
 
