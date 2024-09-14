@@ -5,7 +5,7 @@
 			compatible = "zmk,behavior-soft-off";
             #binding-cells = <0>;
             hold-time-ms = <5000>;
-		}
+		};
 	};
 
     soft_off_direct_scan: soft_off_direct_scan {
