@@ -22,7 +22,7 @@
             timeout-ms = <59>;
             key-positions = <42 43>;
             bindings = <&soft_off>;
-        }
+        };
     };
 
     behaviors {
