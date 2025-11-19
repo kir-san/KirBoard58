@@ -22,8 +22,8 @@
         };
         
         combo_f18 {
-            timeout-ms = <50>;
-            key-positions = <24 53>;
+            timeout-ms = <150>;
+            key-positions = <24 52>;
             bindings = <&kp F18>;
             layers = <DEF_MAC>;
         };
@@ -53,6 +53,35 @@
             quick-tap-ms = <200>;
             require-prior-idle-ms = <125>;
             bindings = <&kp>, <&kp>;
+        };
+
+        os_win: os_win {
+            compatible = "zmk,behavior-macro";
+            label = "OS_WIN";
+            #binding-cells = <0>;
+            bindings = <
+                &bt BT_SEL 0     // подключиться к Windows
+                &to DEF_WIN      // переключить базовый слой на default_win
+            >;
+        };
+
+        os_mac: os_mac {
+            compatible = "zmk,behavior-macro";
+            label = "OS_MAC";
+            #binding-cells = <0>;
+            bindings = <
+                &bt BT_SEL 1     // подключиться к macOS
+                &to DEF_MAC      // переключить базовый слой на default_mac
+            >;
+        };
+
+        os_switch: os_switch {
+            compatible = "zmk,behavior-tap-dance";
+            label = "OS_SWITCH";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            // один тап -> Win, двойной тап -> Mac
+            bindings = <&os_win>, <&os_mac>;
         };
     };
 
@@ -86,9 +115,9 @@
         control_win {
             bindings = <
 &kp ESC  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                             &kp F6  &kp F7        &kp F8      &kp F9         &kp F10    &kp EQUAL
-&trans   &none   &none   &none   &none   &none                              &none   &kp LA(LEFT)  &kp UP      &kp LA(RIGHT)  &kp PG_UP  &kp RIGHT_BRACKET
+&trans   &none   &none   &none   &none   &none                              &none   &kp LC(LEFT)  &kp UP      &kp LC(RIGHT)  &kp PG_UP  &kp RIGHT_BRACKET
 &trans   &none   &trans  &none   &none   &none                              &none   &kp LEFT      &kp DOWN    &kp RIGHT      &kp ENTER  &kp BACKSLASH
-&trans   &trans  &trans  &trans  &trans  &none   &none     &kp PRINTSCREEN  &trans  &kp LG(LEFT)  &kp DELETE  &kp LG(RIGHT)  &kp PG_DN  &kp BACKSPACE
+&trans   &trans  &trans  &trans  &trans  &none   &none     &kp PRINTSCREEN  &trans  &kp HOME      &kp DELETE  &kp END        &kp PG_DN  &kp BACKSPACE
                          &trans  &trans  &trans  &trans    &trans           &trans  &none         &none
             >;
 
@@ -98,9 +127,9 @@
         control_mac {
             bindings = <
 &kp ESC  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                             &kp F6  &kp F7        &kp F8      &kp F9         &kp F10    &kp EQUAL
-&trans   &none   &none   &none   &none   &none                              &none   &kp LC(LEFT)  &kp UP      &kp LC(RIGHT)  &kp PG_UP  &kp RIGHT_BRACKET
+&trans   &none   &none   &none   &none   &none                              &none   &kp LA(LEFT)  &kp UP      &kp LA(RIGHT)  &kp PG_UP  &kp RIGHT_BRACKET
 &trans   &none   &trans  &none   &none   &none                              &none   &kp LEFT      &kp DOWN    &kp RIGHT      &kp ENTER  &kp BACKSLASH
-&trans   &trans  &trans  &trans  &trans  &none   &none     &kp PRINTSCREEN  &trans  &kp HOME      &kp DELETE  &kp END        &kp PG_DN  &kp BACKSPACE
+&trans   &trans  &trans  &trans  &trans  &none   &none     &kp PRINTSCREEN  &trans  &kp LG(LEFT)  &kp DELETE  &kp LG(RIGHT)  &kp PG_DN  &kp BACKSPACE
                          &trans  &trans  &trans  &trans    &trans           &trans  &none         &none
             >;
 
@@ -121,11 +150,11 @@
 
         system {
             bindings = <
-&bootloader  &studio_unlock &none  &none  &bt BT_SEL 0  &bt BT_CLR_ALL                  &kp C_BRI_UP  &none  &none  &none  &none  &none
-&none        &to DEF_WIN    &none  &none  &bt BT_SEL 1  &bt BT_CLR                      &kp C_BRI_DN  &none  &none  &none  &none  &none
-&none        &to DEF_MAC    &none  &none  &none         &none                           &none         &none  &none  &none  &none  &none
-&none        &none          &none  &none  &none         &none           &none    &none  &none         &none  &none  &none  &none  &trans
-                                   &none  &none         &none           &none    &none  &none         &none  &none
+&bootloader  &studio_unlock &none  &none  &none  &bt BT_CLR_ALL                &kp C_BRI_UP  &none  &none  &none  &none  &none
+&none        &none          &none  &none  &none  &bt BT_CLR                    &kp C_BRI_DN  &none  &none  &none  &none  &none
+&none        &none          &none  &none  &none  &os_switch                    &none         &none  &none  &none  &none  &none
+&none        &none          &none  &none  &none  &none         &none    &none  &none         &none  &none  &none  &none  &trans
+                                   &none  &none  &none         &none    &none  &none         &none  &none
             >;
 
             display-name = "system";
