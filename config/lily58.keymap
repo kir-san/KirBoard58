@@ -16,7 +16,7 @@
         compatible = "zmk,combos";
 
         combo_grave {
-            timeout-ms = <50>;
+            timeout-ms = <150>;
             key-positions = <0 1>;
             bindings = <&kp GRAVE>;
         };
