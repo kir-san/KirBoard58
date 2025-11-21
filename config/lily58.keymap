@@ -85,12 +85,12 @@
         };
 
         lang_switch: lang_switch {
-            compatible = "zmk,behavior-tap-dance";
-            label = "OS_SWITCH";
+            compatible = "zmk,behavior-hold-tap";
+            label = "LANG_SWITCH";
             #binding-cells = <0>;
-            tapping-term-ms = <250>;
-            // один тап -> переключение слоя, двойной тап -> вызов комбинации
-            bindings = <&mo SYSTEM>, <&kp F18>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp F18>, <&mo SYSTEM>;
         };
     };
 
